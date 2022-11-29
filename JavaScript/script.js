@@ -30,17 +30,26 @@ function generatePassword() {
     return;
   }
 
-  // Confirms if the password should include Capital leters.
+  // Confirms if the password should include upper case leters.
   var capCheck = window.prompt("Should your password use capital letters? (Enter 'Y' for Yes, or 'N' for No)");
   capCheck = capCheck.toUpperCase();
-  var capTrue = (capTrue === confirmation[0]);
-  var capFalse = (capFalse === confirmation[1]);
+  var capConfirm = (capCheck === confirmation[0] || capCheck === confirmation[1]);
 
-  // Cancels criteria questions and displays alert for invalid entry. Need to debug to find why an error is returned in Console.
-  if (!capTrue && !capFalse) {
+  // Cancels criteria questions and displays alert for invalid entry.
+  if (capConfirm === false) {
     window.alert("Invalid entry.");
     return;
   }
+    // Confirms if the password should include lower case leters.
+    var lowCheck = window.prompt("Should your password use capital letters? (Enter 'Y' for Yes, or 'N' for No)");
+    lowCheck = lowCheck.toUpperCase();
+    var lowConfirm = (lowCheck === confirmation[0] || capCheck === confirmation[1]);
+  
+    // Cancels criteria questions and displays alert for invalid entry.
+    if (lowConfirm === false) {
+      window.alert("Invalid entry.");
+      return;
+    }
 }
 
 // Write password to the #password input
@@ -53,4 +62,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
