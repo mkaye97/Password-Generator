@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var stringLow = "abcdefghijklmnopqrstuvwxyz";
 var stringCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var stringNum = "1234567890";
-var stringSpecChars = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + '"';
+var stringSpec = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + '"';
 
 // Values for window prompts
 var confirmation = ["Y", "N"];
@@ -15,7 +15,7 @@ var charSetMain = {
   arrLettersLow: stringLow.split(''),
   arrLettersCap: stringCap.split(''),
   arrNumbers: stringNum.split(''),
-  arrSpecChars: stringSpecChars.split('')
+  arrSpec: stringSpec.split('')
 }
 
 // Sets password length
@@ -73,6 +73,31 @@ function generatePassword() {
   if (specConfirm === false) {
   window.alert("Invalid entry.");
   return;
+  }
+
+  //Creates the array for the character set.
+  if (capCheck === confirmation[0]) {
+    var charSet1 = charSetMain.arrLettersCap;
+  } else {
+    var charSet1 = [];
+  }
+
+  if (lowCheck === confirmation[0]) {
+    charSet2 = charSet1 + charSetMain.arrLettersLow;
+  } else {
+    var charSet2 = charSet1;
+  }
+  
+  if (numCheck === confirmation[0]) {
+    charSet3 = charSet2 + charSetMain.arrNumbers;
+  } else {
+    var charSet3 = charSet2;
+  }
+  
+  if (specCheck === confirmation[0]) {
+    charSetFin = charSet3 + charSetMain.arrSpec;
+  } else {
+    var charSetFin = charSet3;
   }
 }
 
