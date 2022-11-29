@@ -11,7 +11,7 @@ var stringSpecChars = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + '"';
 var confirmation = ["Y", "N"];
 
 // Character sets as arrays
-var charSet = {
+var charSetMain = {
   arrLettersLow: stringLow.split(''),
   arrLettersCap: stringCap.split(''),
   arrNumbers: stringNum.split(''),
@@ -24,6 +24,7 @@ function generatePassword() {
   var largeCriteria = (passLength < 8);
   var smallCriteria = (passLength > 128);
 
+
   // Cancels criteria questions and displays alert for invalid entry.
   if (largeCriteria || smallCriteria) {
     window.alert("Invalid entry.");
@@ -31,25 +32,48 @@ function generatePassword() {
   }
 
   // Confirms if the password should include upper case leters.
-  var capCheck = window.prompt("Should your password use capital letters? (Enter 'Y' for Yes, or 'N' for No)");
+  var capCheck = window.prompt("Should your password use upper case letters? (Enter 'Y' for Yes, or 'N' for No)");
   capCheck = capCheck.toUpperCase();
   var capConfirm = (capCheck === confirmation[0] || capCheck === confirmation[1]);
 
   // Cancels criteria questions and displays alert for invalid entry.
   if (capConfirm === false) {
-    window.alert("Invalid entry.");
-    return;
-  }
-    // Confirms if the password should include lower case leters.
-    var lowCheck = window.prompt("Should your password use capital letters? (Enter 'Y' for Yes, or 'N' for No)");
-    lowCheck = lowCheck.toUpperCase();
-    var lowConfirm = (lowCheck === confirmation[0] || capCheck === confirmation[1]);
-  
-    // Cancels criteria questions and displays alert for invalid entry.
-    if (lowConfirm === false) {
-      window.alert("Invalid entry.");
+     window.alert("Invalid entry.");
       return;
-    }
+  }
+ 
+  // Confirms if the password should include lower case leters.
+  var lowCheck = window.prompt("Should your password use lower case letters? (Enter 'Y' for Yes, or 'N' for No)");
+  lowCheck = lowCheck.toUpperCase();
+  var lowConfirm = (lowCheck === confirmation[0] || lowCheck === confirmation[1]);
+  
+  // Cancels criteria questions and displays alert for invalid entry.
+  if (lowConfirm === false) {
+  window.alert("Invalid entry.");
+  return;
+  }
+  
+  // Confirms if the password should include numbers.
+  var numCheck = window.prompt("Should your password use numbers? (Enter 'Y' for Yes, or 'N' for No)");
+  numCheck = numCheck.toUpperCase();
+  var numConfirm = (numCheck === confirmation[0] || numCheck === confirmation[1]);
+  
+  // Cancels criteria questions and displays alert for invalid entry.
+  if (numConfirm === false) {
+  window.alert("Invalid entry.");
+  return;
+  }
+
+  // Confirms if the password should include special characters.
+  var specCheck = window.prompt("Should your password use special characters? (Enter 'Y' for Yes, or 'N' for No)");
+  specCheck = specCheck.toUpperCase();
+  var specConfirm = (specCheck === confirmation[0] || specCheck === confirmation[1]);
+    
+  // Cancels criteria questions and displays alert for invalid entry.
+  if (specConfirm === false) {
+  window.alert("Invalid entry.");
+  return;
+  }
 }
 
 // Write password to the #password input
