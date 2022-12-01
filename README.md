@@ -30,7 +30,7 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Screenshot Can be Found Below
 
-![Password Generator Screenshot](\images\PassGenScreenshot.png)
+![Password Generator Screenshot](/images/PassGenScreenshot.png)
 
 
 ## Link to Deployment
